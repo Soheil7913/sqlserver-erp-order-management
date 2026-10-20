@@ -26,6 +26,14 @@ Create an empty database named ErpOrderManagement (or choose another name), conn
 4. Run [sql/04_reporting_queries.sql](sql/04_reporting_queries.sql) when you want to explore reports.
 5. Run [sql/05_performance_review.sql](sql/05_performance_review.sql) to compare query shapes and inspect the actual execution plan.
 
+## Verified run
+
+The scripts were run in SSMS against a separate ErpOrderManagement database on SQL Server 17.0 RTM. The schema, procedures, sample data, reporting queries, and performance review completed successfully.
+
+The seed data contains 3 customers, 5 products, 3 placed orders, and 7 order lines. The reporting script returned 15 rows across its four result sets. The performance review returned the same 3 seed orders for both date filters; its small sample is for demonstration, not a performance benchmark.
+
+The create-and-cancel workflow was also run for 2 units of SKU-100. Available stock changed from 22 to 20 when the order was placed, then returned to 22 when it was cancelled. Repeating the cancellation left stock at 22, and the order status remained Cancelled. The demonstration order remains in the local database as a cancelled order.
+
 ## Try the order workflow
 
 ~~~sql
